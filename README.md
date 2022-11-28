@@ -1,6 +1,15 @@
-# dockerfiles
+<div align="center">
+  <h1>dockerfiles <sup>:whale:</sup></h1>
+  <b><i>A collection of dockerfiles to enable reproducible scientific research and beyond!</i></b>
+</div>
 
-A collection of dockerfiles to enable reproducible scientific research and beyond! This repository contains dockerfiles for commonly used used bioinformatics tools and applications.
+## Overview
+
+This repository contains dockerfiles for commonly used bioinformatics tools and applications. Each child directory represents a _dockerized_ tool. If multiple versions of a tool exist, there maybe a sub-directory for each version of the tool.
+
+Within any given tool's directory, you will find a _REAME.md_ and a _Dockerfile_. Each _README.md_ contains instructions for how to `build`, `tag`, and `push` an image to Dockerhub. 
+
+Please note that each Docker image also contains a copy of its _Dockerfile_. It can be found within the following location: `/opt2/Dockerfile`.
 
 ## Getting Started
 
@@ -17,27 +26,22 @@ Accounts you need:
 
 ### Installation
 
-A step by step series of examples that tell you how to get a development environment up and running
+Once the prerequisites have been met, setting up a development environment is easy!
 
-Let's start off by cloning this repository
+Let's start off by cloning this repository:
 ```bash
 git clone https://github.com/OpenOmics/dockerfiles.git
 cd dockerfiles
 ```
 
-Each of the listed directories represents a _dockerized_ tool. If multiple versions of a tool exist, there maybe a sub-directory for each version of the tool. 
-
-Within any given tool's directory, you will find a _REAME.md_ and a _Dockerfile_. The _README.md_ contains instructions for how to `build`, `tag`, and `push` the docker images to Dockerhub. 
-
 ## Versioning
 
-We use `git`, `GitHub`, and `DockerHub` for versioning. For the versions available on GitHub, please see the [tags on this repository](https://github.com/skchronicles/Docker/tags).
+We use `git`, `GitHub`, and `DockerHub` for versioning. For the versions available on GitHub, please see the [tags on this repository](https://github.com/OpenOmics/dockerfiles/tags).
 For more information about available container images, please visit: 
 - https://hub.docker.com/u/skchronicles 
-
 
 <hr>
 
 <p align="center">
-	<a href="#dockerfiles">Back to Top</a>
+  <a href="#dockerfiles-whale">Back to Top</a>
 </p>
