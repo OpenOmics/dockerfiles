@@ -1,11 +1,25 @@
-# slyph 
+# Utility
+
+# build image from dockerfile
+
+docker build -f centrifuger_slyph/Dockerfile .
+#prints sha256:<container hash>.
+
+# push image to docker hub
+
+docker tag <container hash> <docker hub repo>:<image tag>
+docker push <docker hub repo>:<image tag>
+
+# References
+
+## slyph 
 
  - github: https://github.com/bluenote-1577/sylph
  - databases: http://faust.compbio.cs.cmu.edu/sylph-stuff/
 
 Jim Shaw and Yun William Yu. Rapid species-level metagenome profiling and containment estimation with sylph (2024). Nature Biotechnology.
 
-# centrifudger
+## centrifuger
 
  - github: https://github.com/mourisl/centrifuger
  - databases: 
