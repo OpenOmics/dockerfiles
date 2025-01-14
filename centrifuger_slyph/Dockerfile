@@ -1,5 +1,7 @@
 FROM continuumio/miniconda3
-RUN conda install -c conda-forge -c bioconda centrifuger sylph
+RUN conda install -c conda-forge -c bioconda  sylph
 RUN apt-get update -y -qq
-RUN apt-get install wget -y -qq
-# RUN mkdir /refs; cd /refs; wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+RUN apt-get install wget git libz-dev build-essential libpthread-stubs0-dev -y -qq
+RUN mkdir /work; cd /work; git clone https://github.com/mourisl/centrifuger.git; cd centrifuger; make
+ADD centrifudger-link.sh /
+RUN ./centrifudger-link.sh
