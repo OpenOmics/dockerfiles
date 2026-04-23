@@ -67,12 +67,20 @@ RUN pip3 install --upgrade pip
 # Install conda and mamba and create an
 # environment called, hla-la to install
 # hla-la and its dependencies.
+# NOTE: conda/mamba init scripts use bash
+SHELL ["/bin/bash", "-c"] 
 RUN mkdir -p /opt2/conda/ \
         && wget -O /opt2/conda/Miniforge3_install.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" \
         && bash /opt2/conda/Miniforge3_install.sh -b -f -p /opt2/conda/ \
         && . "/opt2/conda/etc/profile.d/conda.sh" \
         && . "/opt2/conda/etc/profile.d/mamba.sh" \
         && mamba create -y --name hla-la -c bioconda -c conda-forge hla-la=1.0.4 \
+        && sed -i "s:^\(picard_sam2fastq_bin=\).*:\1/opt2/conda/envs/hla-la/bin/picard:" /opt2/conda/envs/hla-la/opt/hla-la/src/paths.ini \
+        && sed -i "s:^\(samtools_bin=\).*:\1/opt2/conda/envs/hla-la/bin/samtools:" /opt2/conda/envs/hla-la/opt/hla-la/src/paths.ini \
+        && sed -i "s:^\(bwa_bin=\).*:\1/opt2/conda/envs/hla-la/bin/bwa:" /opt2/conda/envs/hla-la/opt/hla-la/src/paths.ini \
+        && sed -i "s:^\(nucmer_bin=\).*:\1/opt2/conda/envs/hla-la/bin/nucmer:" /opt2/conda/envs/hla-la/opt/hla-la/src/paths.ini \
+        && sed -i "s:^\(dnadiff_bin=\).*:\1/opt2/conda/envs/hla-la/bin/dnadiff:" /opt2/conda/envs/hla-la/opt/hla-la/src/paths.ini \
+        && mkdir -p /opt2/conda/envs/hla-la/opt/hla-la/graphs \
         && mamba clean --all -y \
         && rm -f /opt2/conda/Miniforge3_install.sh
 
